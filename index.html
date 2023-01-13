@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <script type="text/javascript">
+      google.charts.load("current", { packages: ["corechart"] });
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        google.charts.load("current", {
+          callback: drawChart,
+          packages: ["corechart"],
+        });
+
+        data.addColumn("number", "x");
+        data.addColumn("number", "y0");
+
+        data.addRows([
+          [new Date(2020, 1, 0), 1100000000],
+          [new Date(2020, 2, 0), 970000000],
+          [new Date(2020, 3, 0), 1100000000],
+          [new Date(2020, 4, 0), 1100000000],
+          [new Date(2020, 5, 0), 1180000000],
+          [new Date(2020, 6, 0), 1120000000],
+          [new Date(2020, 7, 0), 1250000000],
+          [new Date(2020, 8, 0), 1300000000],
+          [new Date(2020, 9, 0), 1285000000],
+          [new Date(2020, 10, 0), 1230000000],
+          [new Date(2020, 11, 0), 1570000000],
+          [new Date(2020, 12, 0), 1470000000],
+          [new Date(2021, 1, 0), 980000000],
+          [new Date(2021, 2, 0), 800000000],
+          [new Date(2021, 3, 0), 900000000],
+          [new Date(2021, 4, 0), 900000000],
+          [new Date(2021, 5, 0), 880000000],
+          [new Date(2021, 6, 0), 820000000],
+          [new Date(2021, 7, 0), 2050000000],
+          [new Date(2021, 8, 0), 2000000000],
+          [new Date(2021, 9, 0), 1585000000],
+          [new Date(2021, 10, 0), 2730000000],
+          [new Date(2021, 11, 0), 2670000000],
+          [new Date(2021, 12, 0), 2670000000],
+        ]);
+
+        data2.addRows([
+          [new Date(2020, 1, 0), 1840000000],
+          [new Date(2020, 2, 0), 1840000000],
+          [new Date(2020, 3, 0), 25000000000],
+          [new Date(2020, 4, 0), 25000000000],
+          [new Date(2020, 5, 0), 1600000000],
+          [new Date(2020, 6, 0), 1700000000],
+          [new Date(2020, 7, 0), 1700000000],
+          [new Date(2020, 8, 0), 1700000000],
+          [new Date(2020, 9, 0), 1700000000],
+          [new Date(2020, 10, 0), 2500000000],
+          [new Date(2020, 11, 0), 2500000000],
+          [new Date(2020, 12, 0), 2500000000],
+          [new Date(2021, 1, 0), 905000000],
+          [new Date(2021, 2, 0), 725000000],
+          [new Date(2021, 3, 0), 825000000],
+          [new Date(2021, 4, 0), 825000000],
+          [new Date(2021, 5, 0), 805000000],
+          [new Date(2021, 6, 0), 745000000],
+          [new Date(2021, 7, 0), 1975000000],
+          [new Date(2021, 8, 0), 1925000000],
+          [new Date(2021, 9, 0), 1510000000],
+          [new Date(2021, 10, 0), 2655000000],
+          [new Date(2021, 11, 0), 2595000000],
+          [new Date(2021, 12, 0), 2595000000],
+        ]);
+
+        var view = new google.visualization.DataView(data);
+
+        view.setColumns([
+          0,
+          1,
+          {
+            label: "y1=x",
+            type: "number",
+            calc: function (dt, row) {
+              return dt.getValue(row, 0);
+            },
+          },
+        ]);
+
+        var options = {
+          seriesType: "scatter",
+          series: {
+            1: {
+              type: "line",
+            },
+          },
+        };
+
+        var chart = new google.visualization.ComboChart(
+          document.getElementById("chart_div")
+        );
+        chart.draw(view, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px"></div>
+  </body>
+</html>
